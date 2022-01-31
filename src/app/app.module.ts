@@ -1,3 +1,5 @@
+import { ComponentsModule } from './shared/components/components.module';
+import { DirectivesModule } from './shared/directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DirectivesModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
