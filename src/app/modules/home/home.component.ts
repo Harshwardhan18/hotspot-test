@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       type: 'img',
       sourceUrl: 'assets/lobby.jpg',
       hotspots: hotspotsArray || [],
-      mode: 'multi'
+      mode: 'single'
     };
     hotspots.default.setupHotspot(settings);
 
