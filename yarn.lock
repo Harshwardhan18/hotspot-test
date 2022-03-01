@@ -4276,6 +4276,11 @@ hosted-git-info@^4.0.1:
   dependencies:
     lru-cache "^6.0.0"
 
+hotspot-js@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/hotspot-js/-/hotspot-js-2.6.0.tgz#6cb929ded9855d63b1af83bdeea22ca444b0b950"
+  integrity sha512-YzBGI6c5JfUgj78+SAXxRsjTR8/cDHgmJxd2jB4de/0sdxRz/tSiamUkWg28qMK4YE+srF21ZsTPPZ/Nt3axNg==
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
