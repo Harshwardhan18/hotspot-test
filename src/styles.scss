@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+}
