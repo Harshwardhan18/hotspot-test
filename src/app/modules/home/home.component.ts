@@ -8,8 +8,14 @@ import * as hotspots from 'hotspot-js'
 
 export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef;
+  mode = false;
   constructor() { }
   ngOnInit() {
+    this.setupHotspotConfiguration();
+
+  }
+
+  setupHotspotConfiguration(mode?: string) {
     const hotspotsArray = JSON.parse(localStorage.getItem('hotspots')) || [];
     hotspotsArray.forEach(element => {
       element.path = new Path2D();
@@ -19,17 +25,41 @@ export class HomeComponent implements OnInit, AfterViewInit {
       type: 'img',
       sourceUrl: 'assets/lobby.jpg',
       hotspots: hotspotsArray || [],
-      mode: 'single'
+      mode: mode || 'single'
     };
     hotspots.default.setupHotspot(settings);
+  }
 
+  changeConfiguration() {
+    this.mode = !this.mode;
+    this.setupHotspotConfiguration(this.mode ? 'single' : 'multi');
   }
 
   ngAfterViewInit(): void {
       this.canvas.nativeElement.addEventListener('hotspot-added', (e) => {
         const arr = JSON.parse(localStorage.getItem('hotspots')) || [];
-        arr.push(e.detail);
+        if(!this.mode) {
+          arr.push(e.detail);
+        } else {
+          this.editHotspot(arr, e);
+        }
         localStorage.setItem('hotspots', JSON.stringify(arr));
       });
   }
+
+  editHotspot(arr: any, e: any) {
+    let index = null;
+  const editableHotspot = arr.find((hotspot, i) => {
+    if (hotspot.isActive) {
+      index = i;
+      return hotspot;
+    }
+  });
+  if(editableHotspot){
+    arr[index] = e.detail;
+  } else {
+    arr.push(e.detail);
+  }
+  }
 }
+
